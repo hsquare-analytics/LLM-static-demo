@@ -1,6 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 10px;
-  font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;
   background: #fcfcfc;
   color: #333;
 }
@@ -465,4 +469,58 @@ input::-webkit-inner-spin-button {
 /* Firefox  */
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+.table {
+  //width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  thead {
+    th {
+      min-width: 5rem;
+      height: 4.7rem;
+      padding: 0.2rem 0.6rem;
+      font-weight: 700;
+      text-align: center;
+      vertical-align: middle;
+      background: #eff0f7;
+      border-bottom: 1px solid #d7d8df;
+      border-right: 1px solid #d7d8df;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    tr:first-child th {
+      border-right: 1px solid #d7d8df;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #d7d8df;
+
+      td {
+        min-width: 5rem;
+        height: 4.7rem;
+        padding: 0.2rem 0.6rem;
+        text-align: center;
+        vertical-align: middle;
+        background: #f9fafb;
+        border-right: 1px solid #d7d8df;
+
+        &.number {
+          text-align: right;
+        }
+      }
+    }
+  }
+
 }

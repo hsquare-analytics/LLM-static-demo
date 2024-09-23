@@ -1,32 +1,14 @@
 import * as React from 'react';
-import {format} from "sql-formatter";
+// import {format} from "sql-formatter";
 
 import ReactionLogo from "app/components/common/ReactionLogo";
 
-const sql = `WITH SurgeryPatients
-                      AS (SELECT EXTRACT(YEAR FROM SRGR.OP_EXPT_DT) AS Year, EXTRACT (MONTH FROM SRGR.OP_EXPT_DT) AS Month, COUNT (*) AS PatientCount
-             FROM
-                 CDW.FT_CRE_SRGR AS SRGR
-             WHERE
-                 SRGR.MED_DEPT_CD = 'TS' -- assuming 'TS' is the code for Thoracic Surgery
-               AND SRGR.AGE_CD_YY >= 18
-               AND SRGR.OP_EXPT_DT >= (CURRENT_DATE - INTERVAL '3 years')
-             GROUP BY
-                 Year, Month
-                 )
-SELECT
-    Year, Month, SUM (PatientCount) AS TotalPatients
-FROM
-    SurgeryPatients
-GROUP BY
-    Year, Month
-ORDER BY
-    Year, Month;`
+const sql = `시나리오 WIP`
 
 function ScenarioResult01() {
-  const formattedSqlText = React.useMemo(() => {
-    return format(sql, {language: 'postgresql'})
-  }, [])
+  // const formattedSqlText = React.useMemo(() => {
+  //   return format(sql, {language: 'postgresql'})
+  // }, [])
 
   return (
     <React.Fragment>
@@ -37,7 +19,7 @@ function ScenarioResult01() {
         <ReactionLogo/>
         <div className='box-reaction'>
           <p>요청하신 지난 10년간 신증후군 (nephrotic syndrome)으로 (처음) 진단받은 18세 이하의 환자수를 조회하는 쿼리는 다음과 같습니다.</p>
-          <textarea defaultValue={formattedSqlText}/>
+          <pre>{sql}</pre>
 
           <div>
             이대로 쿼리를 실행하여 DB에서 조회할까요?
